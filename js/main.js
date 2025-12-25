@@ -40,7 +40,7 @@ document.querySelectorAll(".custom-select").forEach((select) => {
 });
 
 /* =========================================================
-   FORM VALIDATION + TELEGRAM REDIRECT
+   FORM VALIDATION + TELEGRAM FLOW
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -49,9 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const requiredFields = form.querySelectorAll("[required]");
 
-    /* ---------- SUBMIT ---------- */
+    /* -----------------------------------------------------
+       SUBMIT
+       ----------------------------------------------------- */
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
         let hasErrors = false;
@@ -89,9 +91,30 @@ document.addEventListener("DOMContentLoaded", () => {
         const workType =
             form.querySelector('input[name="work_type"]')?.value || "—";
 
-        /* ---------- FORMAT MESSAGE ---------- */
+        /* ---------- SEND TO SERVER ---------- */
 
-        const message = `📝 Заявка с сайта Flayzex UniHelp
+        try {
+            const response = await fetch("/api/sendTelegram", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name,
+                    telegram,
+                    workType,
+                    subject,
+                    details,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Server error");
+            }
+
+            /* ---------- FORMAT MESSAGE (FOR USER) ---------- */
+
+            const message = `📝 Заявка с сайта Flayzex UniHelp
 
 👤 Имя: ${name}
 📬 Telegram: ${telegram}
@@ -100,17 +123,22 @@ document.addEventListener("DOMContentLoaded", () => {
 🗒 Дополнительные детали:
 ${details}`;
 
-        /* ---------- TELEGRAM REDIRECT ---------- */
+            /* ---------- TELEGRAM REDIRECT ---------- */
 
-        const telegramUsername = "demetri0us";
-        const telegramUrl = `https://t.me/${telegramUsername}?text=${encodeURIComponent(
-            message
-        )}`;
+            const telegramUsername = "demetri0us";
+            const telegramUrl = `https://t.me/${telegramUsername}?text=${encodeURIComponent(
+                message
+            )}`;
 
-        window.open(telegramUrl, "_blank");
+            window.open(telegramUrl, "_blank");
+        } catch (error) {
+            alert("Ошибка отправки заявки. Попробуйте позже.");
+        }
     });
 
-    /* ---------- LIVE ERROR CLEAR ---------- */
+    /* -----------------------------------------------------
+       LIVE ERROR CLEAR
+       ----------------------------------------------------- */
 
     requiredFields.forEach((field) => {
         field.addEventListener("input", () => {
@@ -124,14 +152,16 @@ ${details}`;
        ===================================================== */
 
     function showError(group, field) {
+        if (!group) return;
+
         group.classList.add("is-error");
 
         const error = document.createElement("div");
         error.className = "error-text";
 
-        if (field.tagName === "SELECT") {
+        if (field.name === "work_type") {
             error.textContent = "Выберите тип работы";
-        } else if (field.name === "telegram") {
+        } else if (field.placeholder === "@your_username") {
             error.textContent = "Telegram Username обязателен";
         } else {
             error.textContent = "Это поле обязательно";
