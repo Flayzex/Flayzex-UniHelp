@@ -1,0 +1,119 @@
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: transparent;
+    border-bottom: none;
+
+    transition: background 0.25s ease, backdrop-filter 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.site-header.is-scrolled {
+    background: rgba(248, 250, 252, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 72px;
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* Badge */
+
+.logo-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    background: linear-gradient(135deg, hsl(221 83% 55%), hsl(221 83% 45%));
+    border-radius: 10px;
+
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
+}
+
+.logo-badge .material-symbols-rounded {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+/* Text */
+
+.logo-text {
+    color: var(--foreground);
+}
+
+.logo-text span {
+    color: var(--primary);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.nav {
+    display: flex;
+    gap: 32px;
+}
+
+.nav a {
+    font-size: 14px;
+    color: var(--foreground);
+}
+
+.nav a:hover {
+    opacity: 0.7;
+}
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-link {
+    font-size: 15px;
+    color: var(--foreground);
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    opacity: 0.7;
+}

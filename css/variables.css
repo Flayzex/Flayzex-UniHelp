@@ -1,0 +1,17 @@
+:root {
+    --background: hsl(210 40% 98%);
+    --foreground: hsl(222 47% 11%);
+    --primary: hsl(221 83% 40%);
+    --primary-foreground: hsl(210 40% 98%);
+    --border: hsl(214 32% 88%);
+    --muted: hsl(210 40% 96%);
+    --radius: 0.75rem;
+    --font-body: "Inter", sans-serif;
+    --font-display: "Montserrat", sans-serif;
+    --hero-bg: radial-gradient(
+        1200px 600px at 80% 0%,
+        #eaf2ff 0%,
+        #f5f9ff 45%,
+        #f8fafc 100%
+    );
+}

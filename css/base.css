@@ -1,0 +1,90 @@
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   DOCUMENT
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--foreground);
+    background-color: var(--background);
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 40px;
+    padding: 0 18px;
+
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* ---------- Primary ---------- */
+
+.btn-primary {
+    background: linear-gradient(180deg, hsl(221 83% 50%), hsl(221 83% 45%));
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(59, 130, 246, 0.45);
+}
+
+/* ---------- Outline ---------- */
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+}
+
+.btn-outline:hover {
+    background-color: var(--muted);
+}

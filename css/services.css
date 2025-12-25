@@ -1,0 +1,123 @@
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+.services {
+    padding: 140px 0;
+    background: #ffffff;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.services-header {
+    max-width: 760px;
+    margin: 0 auto 80px;
+
+    text-align: center;
+}
+
+.services-title {
+    margin-bottom: 16px;
+
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--foreground);
+}
+
+.services-subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+}
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.service-card {
+    padding: 32px 28px;
+
+    background: #ffffff;
+    border: 1px solid #e8eef5;
+    border-radius: 20px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #dbe7ff;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.service-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+    margin-bottom: 20px;
+
+    border-radius: 14px;
+}
+
+.service-icon span {
+    font-size: 26px;
+}
+
+/* ---------- Colors ---------- */
+
+.service-icon.blue {
+    background: #e8f0ff;
+    color: #2563eb;
+}
+
+.service-icon.purple {
+    background: #f3e8ff;
+    color: #7c3aed;
+}
+
+.service-icon.green {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.service-title {
+    margin-bottom: 12px;
+
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.service-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--muted-foreground);
+}
